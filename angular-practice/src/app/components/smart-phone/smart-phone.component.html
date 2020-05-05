@@ -1,0 +1,18 @@
+<table>
+	<tr>
+		<th>Mobile Id</th>
+		<th>Mobile Name</th>
+		<th>Mobile Price</th>
+		<th>Mobile Description</th>
+		<th>Mobile Release Update</th>
+	</tr>
+	<tr *ngFor="let obj of smartphone">
+		<td>{{obj.id}}</td>
+		<td>{{obj.name}}</td>
+		<td>{{obj.price}}</td>
+		<td>{{obj.desc}}</td>
+		<td>{{obj.updated}}</td>
+	</tr>
+
+
+</table>
