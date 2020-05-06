@@ -12,7 +12,7 @@ export class SmartPhoneComponent implements OnInit {
   smartPhoneForm: FormGroup;
   smartphone: SmartPhone[] = [];
   smartPhoneSave: SmartPhone[] = [];
-  smartPhoneSaveObj:SmartPhone={};
+  smartPhoneSaveObj:SmartPhone;
   smartPhonedelete:SmartPhone[] = [];
   constructor(private service: ApiService,private formBuilder: FormBuilder) { }
 
@@ -43,15 +43,15 @@ export class SmartPhoneComponent implements OnInit {
     this.smartPhoneForm.reset();
   }
 
-  updateSmartPhone(id:string,price:int) {
+  updateSmartPhone(id:string,price:string) {
     
-    this.service.updateSmartPhone(id,price).subscribe(response => {
-      this.smartPhoneSaveobj = response
+    this.service.updateSmartPhones(id,price).subscribe(response => {
+      this.smartPhoneSaveObj = response
       })
   }
 
   deleteSmartPhone(id:string) {
-    this.service.deleteSmartPhone(id).subscribe(response => {
+    this.service.deleteSmartPhones(id).subscribe(response => {
       this.smartPhonedelete = response
       })
   }

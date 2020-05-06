@@ -44,8 +44,8 @@
 		<td>{{obj.price}}</td>
 		<td>{{obj.desc}}</td>
 		<td>{{obj.updated}}</td>
-		<td (click="updateSmartPhone(obj.id,obj.price)" )>Update</td>
-		<td (click="deleteSmartPhone(obj.id)" )>Delete</td>
+		<td (click)="updateSmartPhone(obj.id,obj.price)" >Update</td>
+		<td (click)="deleteSmartPhone(obj.id)">Delete</td>
 	</tr>
 
 

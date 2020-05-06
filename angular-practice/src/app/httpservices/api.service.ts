@@ -33,12 +33,12 @@ export class ApiService {
 
 //put API
 
-  updateSmartPhones(id:string,price:Number): Observable<SmartPhone> {
+  updateSmartPhones(id:string,price:string): Observable<SmartPhone> {
     let headers = new HttpHeaders().set('Access-Control-Allow-Origin', "*");
     headers = headers.append('Content-Type', 'application/json; charset=utf-8');
     let body = new HttpParams();
     body = body.set('id', id);
-    body = body.set('price', price+"");
+    body = body.set('price', price);
     return this.httpClient.put<SmartPhone>(postSmartPhones,body,{headers:headers});
   }
 
