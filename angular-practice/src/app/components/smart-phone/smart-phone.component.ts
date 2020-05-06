@@ -1,18 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../httpservices/api.service';
 import { SmartPhone } from '../../interfaces/SmartPhone'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-smart-phone',
   templateUrl: './smart-phone.component.html',
   styleUrls: ['./smart-phone.component.css']
 })
 export class SmartPhoneComponent implements OnInit {
-
+  smartPhoneForm: FormGroup;
   smartphone: SmartPhone[] = [];
-  constructor(private service: ApiService) { }
+  smartPhoneSave: SmartPhone[] = [];
+  smartPhoneSaveObj:SmartPhone;
+  smartPhonedelete:SmartPhone[] = [];
+  constructor(private service: ApiService,private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.getSmartPhones();
+    this.smartPhoneForm = this.formBuilder.group({
+            id: ['', Validators.required],
+            name: ['', Validators.required],
+            desc: ['', Validators.required],
+            price: ['', Validators.required],
+            updated:['',Validators.required]
+        });
   }
 
   getSmartPhones() {
@@ -22,4 +34,27 @@ export class SmartPhoneComponent implements OnInit {
     })
   }
 
-}
+  saveSmartPhone() {
+    this.service.saveSmartPhones(this.smartPhoneForm.value).subscribe(response => {
+      this.smartPhoneSave = response
+      })
+  }
+  onReset(){
+    this.smartPhoneForm.reset();
+  }
+
+  updateSmartPhone(id:string,price:string) {
+    
+    this.service.updateSmartPhones(id,price).subscribe(response => {
+      this.smartPhoneSaveObj = response
+      })
+  }
+
+  deleteSmartPhone(id:string) {
+    this.service.deleteSmartPhones(id).subscribe(response => {
+      this.smartPhonedelete = response
+      })
+  }
+
+
+       }

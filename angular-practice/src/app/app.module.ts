@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { SmartPhoneComponent } from './components/smart-phone/smart-phone.component'
 import { AppRoutingModule } from './app-routing.module'
 import { ErrorIntercept } from '../app/errorhandler/error.interceptor'
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,7 +14,8 @@ import { ErrorIntercept } from '../app/errorhandler/error.interceptor'
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     //global error handling with interceptors
