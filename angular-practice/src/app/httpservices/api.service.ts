@@ -18,7 +18,8 @@ export class ApiService {
 
   //get API
   getSmartphonesList(): Observable<SmartPhone[]> {
-    let headers = new HttpHeaders().set('Access-Control-Allow-Origin', "*");
+    let headers = new HttpHeaders()
+	//.set('Access-Control-Allow-Origin','*');
     headers = headers.append('Content-Type', 'application/json; charset=utf-8');
     return this.httpClient.get<SmartPhone[]>(getSmartPhones,{headers:headers});
   }
@@ -26,7 +27,8 @@ export class ApiService {
   //post API
 
   saveSmartPhones(smartPhone:SmartPhone): Observable<SmartPhone[]> {
-    let headers = new HttpHeaders().set('Access-Control-Allow-Origin', "*");
+    let headers = new HttpHeaders()
+	//.set('Access-Control-Allow-Origin','*');
     headers = headers.append('Content-Type', 'application/json; charset=utf-8');
     return this.httpClient.post<SmartPhone[]>(postSmartPhones,smartPhone,{headers:headers});
   }
@@ -34,18 +36,20 @@ export class ApiService {
 //put API
 
   updateSmartPhones(id:string,price:string): Observable<SmartPhone> {
-    let headers = new HttpHeaders().set('Access-Control-Allow-Origin', "*");
+    let headers = new HttpHeaders()
+	//.set('Access-Control-Allow-Origin','*');
     headers = headers.append('Content-Type', 'application/json; charset=utf-8');
     let body = new HttpParams();
     body = body.set('id', id);
     body = body.set('price', price);
-    return this.httpClient.put<SmartPhone>(postSmartPhones,body,{headers:headers});
+    return this.httpClient.put<SmartPhone>(putSmartPhones,body,{headers:headers});
   }
 
   //put API
 
   deleteSmartPhones(id:string): Observable<SmartPhone[]> {
-    let headers = new HttpHeaders().set('Access-Control-Allow-Origin', "*");
+    let headers = new HttpHeaders()
+	//.set('Access-Control-Allow-Origin','*');
     headers = headers.append('Content-Type', 'application/json; charset=utf-8');
     let body = new HttpParams();
     body = body.set('id', id);
